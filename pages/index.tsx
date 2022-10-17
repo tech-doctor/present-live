@@ -1,11 +1,9 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
-//import { Rating } from '@mui/material'
-//import AccessAlarmIcon from '@mui/icons-material/AccessAlarm';
 
 
 const Home: NextPage = () => {
+   
   return (
     <div>
       <Head>
@@ -15,13 +13,10 @@ const Home: NextPage = () => {
       </Head>
 
       <main>
-        {/* <AccessAlarmIcon/> */}
-      {/* <Rating name="half-rating" defaultValue={2.5} precision={0.5} /> */}
-      {/* <Rating name="half-rating-read" defaultValue={2.5} precision={0.5} readOnly /> */}
-        <h1 className='text-3xl font-bold underline'>
+        <h1 className=' text-3xl font-bold underline'>
           Welcome
         </h1>
-        <p>Present-live</p>
+        <p>Present Live</p>
       </main>
     </div>
   )
