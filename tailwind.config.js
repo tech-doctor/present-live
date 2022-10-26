@@ -21,6 +21,7 @@ module.exports = {
         transparent: 'transparent',
         current: 'currentColor',
         black: colors.black,
+        grey: '#9da2b1',
         white: colors.white,
         primary: {
           200: '#cdfff6',
@@ -29,7 +30,7 @@ module.exports = {
           800: '#11a18b',
         },
         secondary: '#202b4b',
-        tertiary:'#e75655'
+        tertiary:'#e75655',
       },
     },
   },
