@@ -28,6 +28,12 @@ a {
 
 * {
   box-sizing: border-box;
+  /* outline: 1px solid black; */
+}
+
+.test{
+  width: 200px;
+  transition: width 0.6s;
 }
 
 /* @media (prefers-color-scheme: dark) {

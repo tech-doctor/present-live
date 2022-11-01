@@ -1,14 +1,18 @@
+import { selectIsConnectedToRoom, useHMSStore } from '@100mslive/react-sdk';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import React from 'react';
+import JoinScreen from '../Join';
 import Header from './Header';
+import Sidebar from './SIdebar';
+
 
 interface Props {
    children:React.ReactNode;
 }
 
 const Layout: NextPage<Props> = ({children}) => {
-   
+   const isConnected = useHMSStore(selectIsConnectedToRoom)
   return (
     <div>
       <Head>
@@ -22,10 +26,16 @@ const Layout: NextPage<Props> = ({children}) => {
         <link rel="icon" href="/favicon.ico"/>
       </Head>
       <main>
-        <>
-         <Header/>
-        </>
-        {children}
+      {!isConnected ? <JoinScreen/> : 
+      <div className='flex'>
+        <div className='hidden md:flex'>
+          <Sidebar/>
+        </div>
+        <div className='w-full pr-4  pl-3 md:pl-6 lg:pl-7 xl:pl-10'>
+          <Header/>
+          {children}
+        </div>
+      </div>} 
       </main>
     </div>
   )

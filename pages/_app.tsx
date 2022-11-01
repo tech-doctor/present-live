@@ -1,10 +1,16 @@
 import '../styles/globals.css';
 import Head from 'next/head';
 import type { AppProps } from 'next/app';
+import { HMSRoomProvider } from "@100mslive/react-sdk";
 
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  return (
+    <HMSRoomProvider>
+       <Component {...pageProps} />
+    </HMSRoomProvider>
+  )
+ 
 }
 
 export default MyApp;
