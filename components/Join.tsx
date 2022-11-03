@@ -32,7 +32,7 @@ const  JoinScreen = () => {
     name: "", role: "" });
   const [isJoining, setIsJoining] = useState(false)
 
-  console.log('track')
+  console.log('track');
 
   const handleInputChange = (e:any) => {
     setInputValues((prevValues) => ({
@@ -45,12 +45,12 @@ const  JoinScreen = () => {
     e.preventDefault();
     console.log(inputValues)
     setIsJoining(true)
-    // const token = await getToken(inputValues.name, inputValues.role)
-    // console.log(token)
-    // await hmsActions.join({
-    //   userName: inputValues.name,
-    //   authToken: token
-    // });
+    const token = await getToken(inputValues.name, inputValues.role)
+    console.log(token)
+    await hmsActions.join({
+      userName: inputValues.name,
+      authToken: token
+    });
   };
 
   return (

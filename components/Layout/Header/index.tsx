@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import React,{useState} from 'react';
+import { useHMSStore, selectPeers } from '@100mslive/react-sdk';
 import { Badge } from '@mui/material';
 import NotificationsNoneSharpIcon from '@mui/icons-material/NotificationsNoneSharp';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -8,6 +9,10 @@ import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 
 const Header: React.FC = () => {
+  const peer = useHMSStore(selectPeers);
+  const {name, roleName, isLocal} = peer[0];
+
+
   const [openSide, setOpenSide] = useState(false);
    
   const openSideFunc = () => {
@@ -32,20 +37,23 @@ const Header: React.FC = () => {
           <MenuOutlinedIcon style={{fontSize: '28px'}}/>
         </div>
         <h4 className=' hidden md:block text-secondary font-bold  text-lg md:text-xl lg:text-2xl leading-0'>
-          Job  interview with Candidate(Isaac)
+          {roleName === 'recruiter'? 
+          `Job interview with candidiate(${name})`:
+          `Job interview with recruiter(${name})`
+          }
         </h4>
         <div className='hidden md:flex bg-[#fdefe5] py-0.5 px-3 rounded-xl items-center mx-5 text-center'>
           <CircleIcon
             style={{fontSize: '6px', color:'#e75655'}}
           />
-          <small className='text-tertiary font-bold text-xs ml-1'>Recruiter</small>
+          <small className='text-tertiary font-bold text-xs ml-1 capitalize'>{roleName}</small>
         </div>
       </div>
       <div className="right flex justify-between items-center">
         <div className="notification mx-7 cursor-pointer">
           <Badge 
           badgeContent = ""
-          sx={{padding:' 0px 0px 0px 30px'}}
+         
           color = "success"
           overlap = "circular"
           variant="dot">
@@ -65,7 +73,7 @@ const Header: React.FC = () => {
               height = {30}/>
             </div>
             <div className="name ml-3 mr-2 md:ml-2 md:mr-1">
-              <p className='text-secondary font-bold text-md'>Bill</p>
+              <p className='text-secondary font-bold text-md capitalize'>{name}</p>
             </div>
             <div className="expand">
               <ExpandMoreIcon
@@ -74,6 +82,7 @@ const Header: React.FC = () => {
           </div>
         </div>
       </div>
+      {/* MOBILE */}
       <div 
       style={style}
       className=" mobile absolute z-10 bg-secondary text-white left-0 top-0 w-2/3 h-full">
@@ -84,12 +93,15 @@ const Header: React.FC = () => {
             <CloseOutlinedIcon/>
           </div>
           <div className="content px-4 font-semibold">
-            Job interview with Candidate(Isaac)
+          {roleName === 'recruiter'? 
+          `Job interview with candidiate(${name})`:
+          `Job interview with recruiter(${name})`
+          }
             <div className='flex bg-[#fdefe5] py-0.5 px-3 rounded-xl items-center mt-5 w-fit'>
               <CircleIcon
                 style={{fontSize: '6px', color:'#e75655'}}
               />
-          <small className='text-tertiary font-bold text-xs ml-1'>Recruiter</small>
+          <small className='text-tertiary font-bold text-xs ml-1 capitalize'>{roleName}</small>
         </div>
           </div>
         </div>
