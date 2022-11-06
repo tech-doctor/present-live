@@ -1,5 +1,5 @@
 import  React from 'react';
-import { useHMSStore, selectPeers, useVideo } from '@100mslive/react-sdk';
+import { useHMSStore, selectPeers} from '@100mslive/react-sdk';
 
 const Participants:React.FC = () => {
    const peers = useHMSStore(selectPeers);

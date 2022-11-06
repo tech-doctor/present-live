@@ -1,7 +1,6 @@
-import { selectIsConnectedToRoom, useHMSStore } from '@100mslive/react-sdk';
-import type { NextPage } from 'next';
-import Head from 'next/head';
 import React from 'react';
+import { selectIsConnectedToRoom, useHMSStore } from '@100mslive/react-sdk';
+import Head from 'next/head';
 import JoinScreen from '../Join';
 import Header from './Header';
 import Sidebar from './SIdebar';
@@ -11,7 +10,7 @@ interface Props {
    children:React.ReactNode;
 }
 
-const Layout: NextPage<Props> = ({children}) => {
+const Layout: React.FC<Props> = ({children}) => {
    const isConnected = useHMSStore(selectIsConnectedToRoom)
   return (
     <div>

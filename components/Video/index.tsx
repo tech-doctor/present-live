@@ -1,7 +1,5 @@
-import type { NextPage } from 'next';
 import React from 'react';
 import { useHMSStore, selectPeers, useVideo } from '@100mslive/react-sdk';
-import { borderRadius, width } from '@mui/system';
 
 interface Props {
     peer: any

@@ -25,6 +25,8 @@ const getToken = async (user_id:string, role:string) => {
   return token;
 };
 
+console.log(process.env)
+
 
 const  JoinScreen = () => {
   const hmsActions = useHMSActions();
@@ -32,7 +34,6 @@ const  JoinScreen = () => {
     name: "", role: "" });
   const [isJoining, setIsJoining] = useState(false)
 
-  console.log('track');
 
   const handleInputChange = (e:any) => {
     setInputValues((prevValues) => ({
@@ -45,8 +46,7 @@ const  JoinScreen = () => {
     e.preventDefault();
     console.log(inputValues)
     setIsJoining(true)
-    const token = await getToken(inputValues.name, inputValues.role)
-    console.log(token)
+    const token = await getToken(inputValues.name, inputValues.role);
     await hmsActions.join({
       userName: inputValues.name,
       authToken: token
