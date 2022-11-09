@@ -1,31 +1,10 @@
 import { useState } from "react";
 import { useHMSActions } from "@100mslive/react-sdk";
-import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
-import FormHelperText from '@mui/material/FormHelperText';
 import FormControl from '@mui/material/FormControl';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Select from '@mui/material/Select';
 import { CircularProgress } from "@mui/material";
-import { display } from "@mui/system";
-
-
-const endPoint = 'https://prod-in2.100ms.live/hmsapi/Present.app.100ms.live/'
-
-const getToken = async (user_id:string, role:string) => {
-  const response = await fetch(`${endPoint}api/token`,{
-    method: "POST",
-    body: JSON.stringify({
-      user_id,
-      role,
-      type: 'app',
-      room_id: "635f87d14208780bf667249f"
-    })
-  });
-  const {token} = await response.json();
-  return token;
-};
-
-console.log(process.env)
+import { getToken } from "../utils/getToken";
 
 
 const  JoinScreen = () => {
@@ -44,13 +23,14 @@ const  JoinScreen = () => {
 
   const handleSubmit = async (e:any) => {
     e.preventDefault();
-    console.log(inputValues)
+    const {name, role} = inputValues;
     setIsJoining(true)
-    const token = await getToken(inputValues.name, inputValues.role);
+    const token = await getToken(name,role);
     await hmsActions.join({
-      userName: inputValues.name,
+      userName: name,
       authToken: token
     });
+    setIsJoining(false);
   };
 
   return (

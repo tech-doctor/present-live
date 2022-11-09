@@ -7,11 +7,11 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import CircleIcon from "@mui/icons-material/Circle";
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
+import Notification from '../../Notification';
 
 const Header: React.FC = () => {
   const peer = useHMSStore(selectPeers);
   const {name, roleName, isLocal} = peer[0];
-
 
   const [openSide, setOpenSide] = useState(false);
    
@@ -51,20 +51,28 @@ const Header: React.FC = () => {
       </div>
       <div className="right flex justify-between items-center">
         <div className="notification mx-7 cursor-pointer">
+        <Notification>
           <Badge 
-          badgeContent = ""
-         
-          color = "success"
-          overlap = "circular"
-          variant="dot">
-            <div className="div">
-              <NotificationsNoneSharpIcon
-              style = {{color: "#babfcb"}}
-              />
-            </div>
+            badgeContent = ""
+            style = {{
+            //padding: '0px 0px 0px 40px', 
+            width:'fit-content',
+            borderRadius:  '50px',
+            }}
+            color = "success"
+            overlap = "circular"
+            variant="dot">
+              <div className="div rounded-full hover:bg-gray-100 hover:scale-90">
+                <NotificationsNoneSharpIcon
+                style = {{color: "#babfcb"
+              }}
+                />
+              </div>
           </Badge>
-          </div>
-          <div className="profile flex justify-between items-center">
+          </Notification>
+        </div>
+       
+        <div className="profile flex justify-between items-center">
             <div className="img w-[25px] h-[25px] md:w-[30px] md:h-[30px]">
               <Image 
               className='rounded-full'

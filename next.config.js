@@ -9,7 +9,7 @@ const nextConfig = {
         hostname: '**.githubusercontent.com',
       },
     ],
-  },
+  }
 }
 
 module.exports = nextConfig
